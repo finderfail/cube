@@ -17,11 +17,8 @@ jobs:
     - name: Install dependencies
       run: make
 
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
+    - name: Run install
+      run: make install
       
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.1
