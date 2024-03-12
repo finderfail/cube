@@ -1,11 +1,11 @@
 .PHONY: clean run
 .SILENT:
 
-cube.o: cube.c
+cube.o: main.c
 	gcc -o $@ $< -lm
 
-run: cube.o
+run: main.o
 	./$<
 
 clean:
-	rm -rf cube.o
+	rm -rf main.o
