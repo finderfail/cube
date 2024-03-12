@@ -4,9 +4,9 @@ project(cube VERSION 0.1.0 LANGUAGES C)
 include(CTest)
 enable_testing()
 
-add_executable(cube cube.c)
+add_executable(main main.c)
 if (UNIX)
-  target_link_libraries(cube m)
+  target_link_libraries(main m)
 endif (UNIX)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
