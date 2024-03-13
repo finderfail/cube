@@ -1,22 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#ifndef _WIN32
 #include <unistd.h>
-#else
-#include <windows.h>
-void usleep(__int64 usec)
-{
-  HANDLE timer;
-  LARGE_INTEGER ft;
-
-  ft.QuadPart = -(10 * usec); 
-  timer = CreateWaitableTimer(NULL, TRUE, NULL);
-  SetWaitableTimer(timer, &ft, 0, NULL, NULL, 0);
-  WaitForSingleObject(timer, INFINITE);
-  CloseHandle(timer);
-}
-#endif
 
 float A, B, C;
 
@@ -78,34 +63,6 @@ int main() {
     cubeWidth = 20;
     horizontalOffset = -2 * cubeWidth;
     // first cube
-    for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += incrementSpeed) {
-      for (float cubeY = -cubeWidth; cubeY < cubeWidth;
-           cubeY += incrementSpeed) {
-        calculateForSurface(cubeX, cubeY, -cubeWidth, '@');
-        calculateForSurface(cubeWidth, cubeY, cubeX, '$');
-        calculateForSurface(-cubeWidth, cubeY, -cubeX, '~');
-        calculateForSurface(-cubeX, cubeY, cubeWidth, '#');
-        calculateForSurface(cubeX, -cubeWidth, -cubeY, ';');
-        calculateForSurface(cubeX, cubeWidth, cubeY, '+');
-      }
-    }
-    cubeWidth = 10;
-    horizontalOffset = 1 * cubeWidth;
-    // second cube
-    for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += incrementSpeed) {
-      for (float cubeY = -cubeWidth; cubeY < cubeWidth;
-           cubeY += incrementSpeed) {
-        calculateForSurface(cubeX, cubeY, -cubeWidth, '@');
-        calculateForSurface(cubeWidth, cubeY, cubeX, '$');
-        calculateForSurface(-cubeWidth, cubeY, -cubeX, '~');
-        calculateForSurface(-cubeX, cubeY, cubeWidth, '#');
-        calculateForSurface(cubeX, -cubeWidth, -cubeY, ';');
-        calculateForSurface(cubeX, cubeWidth, cubeY, '+');
-      }
-    }
-    cubeWidth = 5;
-    horizontalOffset = 8 * cubeWidth;
-    // third cube
     for (float cubeX = -cubeWidth; cubeX < cubeWidth; cubeX += incrementSpeed) {
       for (float cubeY = -cubeWidth; cubeY < cubeWidth;
            cubeY += incrementSpeed) {
